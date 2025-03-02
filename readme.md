@@ -45,10 +45,10 @@ modprobe cp210x
 Привязка стика к контейнеру `compose.yaml`: 
 ``` yml
 homeassistant: 
-	# ...
-	devices: 
-		- /dev/ttyUSB0:/dev/ttyUSB0
-	# ...
+    # ...
+    devices: 
+        - /dev/ttyUSB0:/dev/ttyUSB0
+    # ...
 ```
 
 Развертывание и настройка контейнера Home Assistant (HA):
