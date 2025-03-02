@@ -1,4 +1,4 @@
-###### Подключение стика (для Windows)
+# Подключение стика (для Windows)
 
 [Источник](https://learn.microsoft.com/en-us/windows/wsl/connect-usb#attach-a-usb-device)
 
@@ -40,7 +40,7 @@ modprobe usbserial
 modprobe cp210x
 ```
 
-###### Развертывание контейнеров 
+# Развертывание контейнеров 
 
 Привязка стика к контейнеру `compose.yaml`: 
 ``` yml
@@ -61,10 +61,10 @@ docker compose up -d homeassistant
 Запись ключа в переменную окружения сервиса Plug Control (PC):
 ``` yml 
 plugcontrolservice:
-	# ...
-	environment: 
-		HA_KEY: "<your-key>"
-	# ...
+    # ...
+    environment: 
+        HA_KEY: "<your-key>"
+    # ...
 ```
 
 Развертывание сервиса PC:
@@ -73,27 +73,27 @@ docker compose up -d
 ```
 
 Доп. информация и источники: 
-[Пример compose-файла](https://www.home-assistant.io/installation/linux)
-[Доки Aqara Smart Plug](https://object.pscloud.io/cms/cms/Uploads/file_0_3890_10_0_0_8HPF4V.pdf)
-[Доки Jethome JetStick](https://docs.jethome.ru/ru/zigbee/sticks/jetstick_z2.html)
-[Подключение розетки через стик через интеграцию ZHA](https://docs.jethome.ru/ru/controllers/linux/howto/homeassistant/zha.html)
+- [Пример compose-файла](https://www.home-assistant.io/installation/linux)
+- [Доки Aqara Smart Plug](https://object.pscloud.io/cms/cms/Uploads/file_0_3890_10_0_0_8HPF4V.pdf)
+- [Доки Jethome JetStick](https://docs.jethome.ru/ru/zigbee/sticks/jetstick_z2.html)
+- [Подключение розетки через стик через интеграцию ZHA](https://docs.jethome.ru/ru/controllers/linux/howto/homeassistant/zha.html)
 
-###### Тестирование сервиса 
+# Тестирование сервиса 
 
 Entity Id можно найти в списке сущностей (entities) устройства в Home Assistant. 
 
 Включение розетки:
 ``` sh
 curl -X POST "http://localhost:35000/api/plug/set-state" \
-	-H "Content-Type: application/json" \
-	-H "Host: localhost" \
-	-d '{ "entityId": "switch.plug_switch", "state": "on" }'
+    -H "Content-Type: application/json" \
+    -H "Host: localhost" \
+    -d '{ "entityId": "switch.plug_switch", "state": "on" }'
 ```
 
 Выключение розетки:
 ``` sh
 curl -X POST "http://localhost:35000/api/plug/set-state" \
-	-H "Content-Type: application/json" \
-	-H "Host: localhost" \
-	-d '{ "entityId": "switch.plug_switch", "state": "off" }'
+    -H "Content-Type: application/json" \
+    -H "Host: localhost" \
+    -d '{ "entityId": "switch.plug_switch", "state": "off" }'
 ```
